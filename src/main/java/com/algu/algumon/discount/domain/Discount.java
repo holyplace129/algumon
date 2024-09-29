@@ -18,7 +18,6 @@ public class Discount {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-
     private String source;
     private String title;
     private Long rank;
