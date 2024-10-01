@@ -22,5 +22,5 @@ public class Admin {
     private Boolean isDeleted;
 
     @Enumerated(value = EnumType.STRING)
-    private String authority;
+    private Authority authority;
 }
