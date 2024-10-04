@@ -5,6 +5,7 @@ import jakarta.persistence.*;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import java.time.LocalDateTime;
 
@@ -17,7 +18,9 @@ public class Post {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Setter
     private String title;
+    @Setter
     private String content;
     private Long views;
     private LocalDateTime createDate;
@@ -26,12 +29,12 @@ public class Post {
     @JoinColumn(name = "userId")
     private User user;
 
+    @Setter
     @Enumerated(value = EnumType.STRING)
     private Category category;
 
     @Builder
-    public Post(Long id, String title, String content, Long views, User user, Category category) {
-        this.id = id;
+    public Post(String title, String content, Long views, User user, Category category) {
         this.title = title;
         this.content = content;
         this.views = views;

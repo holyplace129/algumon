@@ -5,6 +5,7 @@ import com.algu.algumon.post.dto.request.PostRequest;
 import com.algu.algumon.post.dto.response.PostResponse;
 import com.algu.algumon.post.service.PostService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -24,10 +25,24 @@ public class PostApi {
         return ResponseEntity.ok(posts);
     }
 
+    // 단일 게시글 조회
+    @GetMapping("/{postId}")
+    public ResponseEntity<PostResponse> getPostId(@PathVariable Long postId) {
+        PostResponse post = postService.getPostById(postId);
+        return ResponseEntity.ok(post);
+    }
+
     // 게시글 작성
     @PostMapping("")
-    public ResponseEntity<Post> write(@RequestBody PostRequest param) {
-        Post post = postService.createPost(param);
-        return ResponseEntity.ok(post);
+    public ResponseEntity<PostResponse> writePost(@RequestBody PostRequest param) {
+        PostResponse response = postService.createPost(param);
+        return ResponseEntity.ok(response);
+    }
+
+    // 게시글 수정
+    @PutMapping("/{postId}")
+    public ResponseEntity<PostResponse> updatePost(@PathVariable Long postId, @RequestBody PostRequest param) {
+        PostResponse response = postService.updatePost(postId, param);
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 }

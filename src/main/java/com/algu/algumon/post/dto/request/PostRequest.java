@@ -14,14 +14,12 @@ public class PostRequest {
 
     private String title;
     private String content;
-    private User user;
     private Category category;
 
     @Builder
-    public PostRequest(String title, String content, User user, Category category) {
+    public PostRequest(String title, String content, Category category) {
         this.title = title;
         this.content = content;
-        this.user = user;
         this.category = category;
     }
 }
