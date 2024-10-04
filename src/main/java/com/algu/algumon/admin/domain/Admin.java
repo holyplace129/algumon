@@ -4,7 +4,7 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 
 @Entity
 @Getter
@@ -18,7 +18,7 @@ public class Admin {
     private String name;
     private String email;
     private String password;
-    private LocalDateTime createDate;
+    private LocalDate createDate;
     private Boolean isDeleted;
 
     @Enumerated(value = EnumType.STRING)

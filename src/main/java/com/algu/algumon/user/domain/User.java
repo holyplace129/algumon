@@ -1,17 +1,15 @@
 package com.algu.algumon.user.domain;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 
 @Entity
 @Getter
 @NoArgsConstructor
+@Table(name = "users")
 public class User {
 
     @Id
@@ -22,8 +20,10 @@ public class User {
     private String password;
     private Long level;
     private Long experiencePoint;
-    private LocalDateTime createdDate;
+    private LocalDate createDate;
     private Long visitCnt;
     private Boolean isBlocked;
     private Boolean isDeleted;
+
+
 }

@@ -2,6 +2,7 @@ package com.algu.algumon.post.domain;
 
 import com.algu.algumon.user.domain.User;
 import jakarta.persistence.*;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -25,7 +26,17 @@ public class Post {
     @JoinColumn(name = "userId")
     private User user;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "categoryId")
+    @Enumerated(value = EnumType.STRING)
     private Category category;
+
+    @Builder
+    public Post(Long id, String title, String content, Long views, User user, Category category) {
+        this.id = id;
+        this.title = title;
+        this.content = content;
+        this.views = views;
+        this.createDate = LocalDateTime.now();
+        this.user = user;
+        this.category = category;
+    }
 }
